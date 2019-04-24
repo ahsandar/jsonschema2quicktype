@@ -1,0 +1,51 @@
+#!/usr/bin/env node
+
+const Fs = require('fs');
+const Program = require('commander');
+const Shell = require('shelljs');
+const info = require('./../package.json');
+
+
+
+Program
+    .version(info.version)
+    .description(info.description)
+    .option('-e QUICKTYPE', 'quicktype flags other than -s')
+    .option('<', 'Path to input file - default: STDIN')
+    .option('>', 'Path to output file - default: STDOUT')
+    .parse(process.argv);
+
+function quicktype(input, flags) {
+    Fs.writeFileSync('schema.json', input);
+    Shell.exec('quicktype -s schema schema.json ${flags}');
+}
+let input = '';
+if (process.stdin.isTTY) {
+    if (!Program.input) {
+        process.exit(1);
+    }
+
+    try {
+        input = Fs
+            .readFileSync(Program.input)
+            .toString();
+    } catch (e) {
+        console.error(`File "${Program.input}" cannot be opened.`);
+        process.exit(1);
+    }
+    quicktype(input, process.env.QUICKTYPE);
+} else {
+    process.stdin.on('data', (chunk) => {
+        input += chunk;
+    });
+
+    process.stdin.on('end', () => {
+        if (!input) {
+            Program.outputHelp();
+            process.exit(1);
+        }
+       quicktype(input, process.env.QUICKTYPE);
+    });
+
+    process.stdin.setEncoding('utf8');
+}

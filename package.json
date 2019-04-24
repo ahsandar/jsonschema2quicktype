@@ -1,0 +1,11 @@
+{
+  "name": "jsonschema2quicktype",
+  "version": "0.0.0",
+  "description": "Quicktype generator from Json Schema",
+  "private": true,
+  "dependencies": {
+    "quicktype": "15.0.182",
+    "commander": "~2.20.0",
+    "shelljs": "~0.8.3"
+  }
+}

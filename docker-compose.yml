@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    container_name: jsonschema2quicktype
+    stdin_open: true
+    tty: true
+    command: "npm start"
+    volumes:
+      - '.:/src/jsonschema2quicktype'
