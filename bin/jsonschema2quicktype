@@ -17,7 +17,7 @@ Program
 
 function quicktype(input, flags) {
     Fs.writeFileSync('schema.json', input);
-    Shell.exec('quicktype -s schema schema.json ${flags}');
+    Shell.exec('quicktype -s schema schema.json ' + flags );
 }
 let input = '';
 if (process.stdin.isTTY) {
