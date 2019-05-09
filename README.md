@@ -20,6 +20,6 @@ This is a container packaging [quicktype](https://github.com/quicktype/quicktype
 #  To go inside the container for fun or else 
 
 
-> `docker-compose up` # exiting with status code 1 needs fix
+> `docker-compose up` 
 
 > `docker exec -it jsonschema2quicktype sh`
