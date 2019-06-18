@@ -1,3 +1,5 @@
+`Github` repo is a mirror of `Gitlab` repo
+
 # Json schema to Typed classes
 
 This is a container packaging [quicktype](https://github.com/quicktype/quicktype) to generate Type classes from [Json Schema](http://json-schema.org/). Purpose of this pacakge is to provide convenience of avoiding installing all tools and requirements to use quicktype to generate type classes from json schema
