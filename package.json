@@ -4,7 +4,7 @@
   "description": "Quicktype generator from Json Schema",
   "private": true,
   "dependencies": {
-    "quicktype": "15.0.182",
+    "quicktype": "19.0.4",
     "commander": "~2.20.0",
     "shelljs": "~0.8.3"
   }
